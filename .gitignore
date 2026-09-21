@@ -21,7 +21,6 @@ settings.json
 # Node & Frontend
 node_modules/
 frontend/dist/
-package-lock.json
 
 # Rust & Tauri
 src-tauri/target/
