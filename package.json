@@ -1,0 +1,18 @@
+{
+  "name": "unlim-clout",
+  "version": "0.1.0",
+  "description": "Unlimited Cloud Storage Powered by Telegram",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:backend": "pyinstaller backend/unlim_clout_backend.spec --distpath src-tauri/bin",
+    "tauri": "tauri",
+    "tauri:dev": "cargo tauri dev",
+    "tauri:build": "cargo tauri build",
+    "build:desktop": "powershell -ExecutionPolicy Bypass -File scripts/build_desktop.ps1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.3.1"
+  }
+}

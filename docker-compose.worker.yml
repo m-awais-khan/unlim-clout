@@ -1,0 +1,23 @@
+services:
+  clout-colab-worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    container_name: clout_colab_worker
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    volumes:
+      - clout_colab_auth:/root/.config/colab-cli
+      - clout_worker_data:/app/data
+    env_file:
+      - ./backend/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - REQUEST_TIMEOUT=86400
+
+volumes:
+  clout_colab_auth:
+    name: clout_colab_auth
+  clout_worker_data:
+    name: clout_worker_data

@@ -1,0 +1,10 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pyrogram>=2.0.106
+tgcrypto>=1.2.5
+sqlalchemy>=2.0.30
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+aiofiles>=24.1.0
+requests>=2.31.0
+pyinstaller>=6.10.0

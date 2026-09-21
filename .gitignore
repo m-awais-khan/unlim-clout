@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+dist-desktop/
+wheels/
+*.egg-info
+*.spec.log
+
+# Virtual environments & secrets
+.venv/
+.env
+*.session
+*.session-journal
+*.db
+cloud_storage.db
+unlim_clout.db
+settings.json
+
+# Node & Frontend
+node_modules/
+frontend/dist/
+package-lock.json
+
+# Rust & Tauri
+src-tauri/target/
+src-tauri/bin/*.exe
+!src-tauri/bin/.gitkeep
