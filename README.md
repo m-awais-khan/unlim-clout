@@ -1,6 +1,6 @@
 <div align="center">
   <img src="frontend/public/logo.png" width="110" alt="Unlim Clout Logo" />
-  <h1>⚡ Unlim Clout</h1>
+  <h1>Unlim Clout</h1>
   <p><strong>Turn Telegram into your personal, unlimited, and private cloud storage with a Google Drive & Colab high-speed bridge.</strong></p>
 
   <p>
