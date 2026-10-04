@@ -50,6 +50,12 @@ export default function RenameModal({
       <div
         className="bg-[#282A2C] border border-[#444746] rounded-[28px] p-6 max-w-[440px] w-full mx-4 shadow-2xl relative text-[#E8EAED] select-none"
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          e.stopPropagation();
+          if (e.key === 'Escape') {
+            onClose();
+          }
+        }}
       >
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -81,6 +87,12 @@ export default function RenameModal({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onKeyDown={(e) => {
+                e.stopPropagation();
+                if (e.key === 'Escape') {
+                  onClose();
+                }
+              }}
               className="bg-[#1e1f20] border border-[#747775] focus:border-[#A8C7FA] text-[#E8EAED] px-4 py-2.5 rounded-xl text-sm outline-none transition-colors w-full shadow-inner"
               placeholder={`Enter ${itemType} name`}
             />

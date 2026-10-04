@@ -1698,6 +1698,37 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // 1. Never intercept keyboard shortcuts if the user is typing in an input, textarea, or contentEditable
+      const targetTag = e.target?.tagName?.toUpperCase();
+      const activeTag = document.activeElement?.tagName?.toUpperCase();
+      const isInput =
+        targetTag === 'INPUT' ||
+        targetTag === 'TEXTAREA' ||
+        targetTag === 'SELECT' ||
+        Boolean(e.target?.isContentEditable) ||
+        activeTag === 'INPUT' ||
+        activeTag === 'TEXTAREA' ||
+        activeTag === 'SELECT' ||
+        Boolean(document.activeElement?.isContentEditable);
+
+      if (isInput) return;
+
+      // 2. Do not intercept background navigation or file shortcuts if any modal/dialog is open
+      const isInsideModal = Boolean(e.target?.closest?.('.fixed.inset-0'));
+      const isAnyModalOpen =
+        renameModal.isOpen ||
+        deleteModal.isOpen ||
+        showNewFolderModal ||
+        showSettingsModal ||
+        showDriveConnectionModal ||
+        showDrivePicker ||
+        showCancelModal ||
+        showCancelDownloadModal ||
+        showCancelDriveModal ||
+        replaceModal.open;
+
+      if (isInsideModal || isAnyModalOpen) return;
+
       // Ctrl+X (Cut)
       if (e.ctrlKey && e.key.toLowerCase() === 'x') {
         if (selectedItems.length > 0) {
@@ -1755,7 +1786,21 @@ function App() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedItems, clipboard, allItems]);
+  }, [
+    selectedItems,
+    clipboard,
+    allItems,
+    renameModal.isOpen,
+    deleteModal.isOpen,
+    showNewFolderModal,
+    showSettingsModal,
+    showDriveConnectionModal,
+    showDrivePicker,
+    showCancelModal,
+    showCancelDownloadModal,
+    showCancelDriveModal,
+    replaceModal.open
+  ]);
 
   const handleShare = (e, item, type) => {
     e.stopPropagation();

@@ -26,3 +26,8 @@ frontend/dist/
 src-tauri/target/
 src-tauri/bin/*.exe
 !src-tauri/bin/.gitkeep
+
+# Local data & sync tools
+scripts/sync_channel_to_db.py
+result.json
+
